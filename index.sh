@@ -249,3 +249,4 @@ convert \
 rm /tmp/animation.gif /tmp/marchepas.gif /tmp/step1.gif /tmp/step2.gif /tmp/step3.gif /tmp/step4.gif /tmp/step5.gif /tmp/step6.gif /tmp/step7.gif /tmp/step8.gif
 
 echo "$the_output"/camarche.gif
+eog "$the_output"/camarche.gif
