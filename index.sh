@@ -210,14 +210,14 @@ convert \
 
 convert \
     -delay 30 \
-    step1.gif \
-    step2.gif  \
-    step3.gif  \
-    step4.gif  \
-    step5.gif  \
-    step6.gif  \
-    step7.gif  \
-    step8.gif  \
+    /tmp/step1.gif \
+    /tmp/step2.gif  \
+    /tmp/step3.gif  \
+    /tmp/step4.gif  \
+    /tmp/step5.gif  \
+    /tmp/step6.gif  \
+    /tmp/step7.gif  \
+    /tmp/step8.gif  \
     -loop 0  \
     /tmp/animation.gif
 
