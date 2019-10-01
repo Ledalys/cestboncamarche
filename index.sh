@@ -1,5 +1,7 @@
 #!/bin/bash
 
+command -v convert >/dev/null 2>&1 || { echo >&2 "convert is required but imagemagick is not installed.  Aborting."; exit 1; }
+
 # récupération des arguments
 # source : https://stackoverflow.com/a/29754866
 getopt --test > /dev/null
@@ -208,19 +210,6 @@ convert \
     -draw "roundrectangle 100,50 400,200 20,15" \
     /tmp/step8.gif
 
-convert \
-    -delay 30 \
-    /tmp/step1.gif \
-    /tmp/step2.gif  \
-    /tmp/step3.gif  \
-    /tmp/step4.gif  \
-    /tmp/step5.gif  \
-    /tmp/step6.gif  \
-    /tmp/step7.gif  \
-    /tmp/step8.gif  \
-    -loop 0  \
-    /tmp/animation.gif
-
 if [ -n "$the_screen" ]; then
     # screen
     convert \
@@ -240,13 +229,22 @@ elif [ -n "$the_text" ]; then
 fi
 
 convert \
-    /tmp/animation.gif \
+    -delay 30 \
+    /tmp/step1.gif \
+    /tmp/step2.gif  \
+    /tmp/step3.gif  \
+    /tmp/step4.gif  \
+    /tmp/step5.gif  \
+    /tmp/step6.gif  \
+    /tmp/step7.gif  \
+    /tmp/step8.gif  \
+    -loop 0  \
     -coalesce null: /tmp/marchepas.gif \
     -geometry +125+60 \
     -layers composite \
     "$the_output"/camarche.gif
 
-rm /tmp/animation.gif /tmp/marchepas.gif /tmp/step1.gif /tmp/step2.gif /tmp/step3.gif /tmp/step4.gif /tmp/step5.gif /tmp/step6.gif /tmp/step7.gif /tmp/step8.gif
+rm /tmp/marchepas.gif /tmp/step1.gif /tmp/step2.gif /tmp/step3.gif /tmp/step4.gif /tmp/step5.gif /tmp/step6.gif /tmp/step7.gif /tmp/step8.gif
 
 echo "$the_output"/camarche.gif
-eog "$the_output"/camarche.gif
+command -v eog >/dev/null 2>&1 && { eog "$the_output"/camarche.gif; }
